@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #FBC5C5;
+    background-color: #fad6d6;
 }
 
 .container {
@@ -19,7 +19,7 @@ body {
     border: solid 2px #747174;
     width: 400px;
     height: 707px;
-    background-color: #FBC5C5;
+    background-color: #1f1f20;
     border-radius: 40px;
     display: flex;
     flex-direction: column;
@@ -82,4 +82,25 @@ body {
 
 #border3 {
     border-radius: 0px 0px 0px 20px;
+}
+
+.buttons>button:hover {
+    filter: brightness(0.8);
+}
+
+.display {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 15px 18px 28px;
+    justify-content: space-between;
+}
+
+#final-value {
+    font-size: 32px;
+}
+
+#initial-value {
+    font-size: 25px;
 }
