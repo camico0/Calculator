@@ -11,6 +11,7 @@ class Display {
             divide: "/",
             multiply: "x",
             rest: "-",
+            module: "%",
         };
     }
 
@@ -18,15 +19,21 @@ class Display {
         //if there is already a point, don't add it
         if (number === "." && this.initialValue.includes(".")) return;
         //the final value is equal to the number we receive
-        this.initialValue = this.initialValue.toString() + number.toString();
-        this.printValues();
+        if (this.initialValue.length < 23) {
+            this.initialValue = this.initialValue.toString() + number.toString();
+            this.printValues();
+        }
     }
 
     printValues() {
+        if (this.finalValue.length > 18) {
+            this.finalValue = this.finalValue.substring(0, 18);
+        }
+
         this.displayFinalValue.textContent = this.finalValue;
-        this.displayInitialValue.textContent = `${this.initialValue} ${
+        this.displayInitialValue.textContent = ` ${
       this.signs[this.operatorType] || ""
-    }`;
+    } ${this.initialValue}`;
     }
 
     evaluate(type) {
@@ -34,6 +41,7 @@ class Display {
         this.operatorType = type;
         this.finalValue = this.initialValue || this.finalValue;
         this.initialValue = "";
+
         this.printValues();
     }
 
@@ -55,11 +63,10 @@ class Display {
         console.log(initialValue, finalValue);
 
         if (isNaN(initialValue) || isNaN(finalValue)) return;
-        this.finalValue = this.calculator[this.operatorType](
-            initialValue,
-            finalValue
-        );
 
+        let result = this.calculator[this.operatorType](finalValue, initialValue);
+
+        this.finalValue = result;
         this.initialValue = this.finalValue;
     }
 }

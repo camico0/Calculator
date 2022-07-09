@@ -12,10 +12,14 @@ class Calculator {
     }
 
     divide(num1, num2) {
-        if (display.initialValue == 0) {
-            display.initialValue == "";
+        if (num2 === 0) {
+            return "math ERROR";
         } else {
             return num1 / num2;
         }
+    }
+
+    module(num1, num2) {
+        return num1 % num2;
     }
 }
